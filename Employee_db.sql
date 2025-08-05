@@ -61,3 +61,15 @@ JOIN departments d ON e.department_id = d.department_id
 WHERE e.salary > 70000
 GROUP BY d.department_name
 HAVING COUNT(e.employee_id) > 2;
+
+--Average salary of employees in each department
+SELECT d.department_name, AVG (e.salary) AS average_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+GROUP BY d.department_name;
+
+--Top 3 highest paid employees in each department, ordered by salary descending
+SELECT TOP 3 e.employee_name, d.department_name, e.salary
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+ORDER BY d.department_name, e.salary DESC;
